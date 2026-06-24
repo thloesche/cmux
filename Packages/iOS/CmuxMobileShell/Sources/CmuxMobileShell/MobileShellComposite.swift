@@ -2200,7 +2200,7 @@ public final class MobileShellComposite: MobileTerminalOutputSinking {
         guard await isScopeCurrent(scope) else {
             return
         }
-        pairedMacs = loaded
+        pairedMacs = Self.coalescePairedMacsByDialEndpoint(loaded, supportedKinds: runtime?.supportedRouteKinds ?? [], preferNonLoopback: Self.prefersNonLoopbackRoutes)
     }
 
     /// Switch the live connection to `macDeviceID`, persisting it as the active
